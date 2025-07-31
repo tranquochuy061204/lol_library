@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+@import 'tailwindcss';
+
+@theme {
+  --font-bangers: 'Bangers', cursive;
+
+  --font-lol: 'Beaufort for LOL', cursive;
+  /* text */
+  --color-description: rgb(200, 170, 110);
+
+  --color-near-black: #0a1428;
+
+  /* animate */
+  --animate-slideFade: slideFade 1.5s ease-in forwards;
+
+  @keyframes slideFade {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    50% {
+      transform: translateX(0%);
+      opacity: 0.5;
+    }
+    80% {
+      transform: translateX(100%);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+  @keyframes rotate {
+    from {
+      transform: rotate(0);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes border-glow {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 200% 50%;
+    }
+  }
+}
+html {
+  @apply scroll-smooth font-bangers;
+}
+
+body {
+  @apply min-h-screen bg-[#0a1428];
+}
+
+.text-eff {
+  @apply text-center font-bangers bg-gradient-to-r from-amber-200 to-amber-700 text-nowrap bg-clip-text text-transparent;
+  text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  -webkit-text-stroke: 0.3px black;
+}
+
+.animate-eff {
+  @apply absolute left-1/2 translate-x-[-50%] p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500;
+}
+
+.fill-tags {
+  filter: invert(76%) sepia(10%) saturate(1516%) hue-rotate(2deg) brightness(91%) contrast(85%);
+}
+
+.glow-border {
+  position: relative;
+  z-index: 1;
+}
+
+.glow-border::before {
+  content: '';
+  display: block;
+  background: linear-gradient(
+    90deg,
+    rgba(253, 230, 138, 0) 0%,
+    /* amber-200, trong suốt */ rgba(253, 230, 138, 1) 50%,
+    /* amber-200, mờ */ rgba(253, 230, 138, 0) 100% /* amber-200, trong suốt */
+  );
+  height: 100px;
+  width: 80px;
+  position: absolute;
+  animation: rotate 0.7s linear forwards infinite;
+
+  top: 50%;
+  transform: translateY(-50%);
+  transform-origin: top center;
+}
