@@ -4,11 +4,11 @@ import { ChampionTagsToVi, getTagIconUrl } from './CDHero';
 
 const MobileCDHero = ({ champion, className }: { champion: Champion; className?: string }) => {
   return (
-    <div>
+    <div className={`${className ?? ''} `}>
       <div
-        className={`mobile-hero bg-cover h-[230px] bg-no-repeat bg-center p-2 text-white w-full flex justify-end flex-col font-lol ${
-          className ?? ''
-        }`}
+        className={`mobile-hero
+           bg-cover h-[230px] bg-no-repeat 
+           bg-center p-2 text-white w-full flex justify-end flex-col font-lol `}
         style={{
           backgroundImage: `url(https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_0.jpg)`,
         }}
