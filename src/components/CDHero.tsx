@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import type { Champion } from '../types/champion.type';
 
-const ChampionTagsToVi = (tags: Champion['tags']) => {
+export const ChampionTagsToVi = (tags: Champion['tags']) => {
   return tags.map((tag) => {
     switch (tag) {
       case 'Fighter':
@@ -22,14 +22,14 @@ const ChampionTagsToVi = (tags: Champion['tags']) => {
   });
 };
 
-const getTagIconUrl = (tag: string) => {
+export const getTagIconUrl = (tag: string) => {
   return `https://www.leagueoflegends.com/_next/static/node_modules/@riotgames/blades-ui/dist/skins/common/assets/role${tag}.svg`;
 };
 
-const CDHero = ({ champion }: { champion: Champion }) => {
+const CDHero = ({ champion, className }: { champion: Champion; className?: string }) => {
   return (
     <div
-      className="bg-cover bg-center p-8 text-white h-[850px] flex justify-start flex-col font-lol"
+      className={`bg-cover bg-center p-8 text-white h-[850px] flex justify-start flex-col font-lol ${className ?? ''}`}
       style={{
         backgroundImage: `url(https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_0.jpg)`,
       }}
@@ -47,7 +47,7 @@ const CDHero = ({ champion }: { champion: Champion }) => {
         </div>
 
         {/* Counter */}
-        <div className="counter flex flex-col items-center self-center gap-2 bg-[#0d0d28] rounded-xl w-[120px] py-2 ">
+        <div className="counter flex flex-col items-center  gap-2 bg-[#0d0d28] rounded-xl w-[120px] py-2 ">
           <a
             href={`https://u.gg/lol/champions/${champion.id.toLowerCase()}/counter`}
             target="_blank"

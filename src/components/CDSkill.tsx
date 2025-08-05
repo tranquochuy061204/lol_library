@@ -26,7 +26,7 @@ const CDSkill = ({ champion }: { champion: Champion }) => {
         {selectedSkill && (
           <video
             key={selectedSkill}
-            className="aspect-16/9 w-[50%] h-[50%] border-amber-200 border-2 p-3 rounded-2xl"
+            className="lg:aspect-16/9 aspect-6/5  w-full h-auto lg:w-[50%] lg:h-[50%] border-amber-200 border-2 p-3 rounded-2xl"
             autoPlay
             loop
             muted
@@ -42,16 +42,20 @@ const CDSkill = ({ champion }: { champion: Champion }) => {
         >
           {/* Nội tại (P) */}
           <div
-            onClick={() => setSelectedSkill('P')}
+            onClick={() => {
+              setSelectedSkill('P');
+            }}
             className={`${
-              selectedSkill === 'P' ? 'glow-border z-0' : 'border-amber-50'
-            } spell overflow-hidden cursor-pointer hover:scale-105 transition  relative
+              selectedSkill === 'P'
+                ? 'glow-border mobile-glow-border z-0 p-[3px] md:p-[3px] lg:p-[0px]'
+                : 'border-amber-50'
+            } spell overflow-hidden cursor-pointer hover:scale-105 transition relative w-fit
    `}
           >
             <img
               src={`https://ddragon.leagueoflegends.com/cdn/15.14.1/img/passive/${champion.passive.image.full}`}
               alt="Passive"
-              className={`rounded z-10 ${selectedSkill === 'P' ? 'm-[3px]' : ''} relative`}
+              className={`rounded z-10 ${selectedSkill === 'P' ? 'lg:m-[3px]' : ''} relative`}
             />
           </div>
 
@@ -62,15 +66,17 @@ const CDSkill = ({ champion }: { champion: Champion }) => {
             return (
               <div
                 key={spell.id}
-                onClick={() => setSelectedSkill(code)}
+                onClick={() => {
+                  setSelectedSkill(code);
+                }}
                 className={`spell relative cursor-pointer overflow-hidden hover:scale-105 transition  w-fit h-fit
-        ${isSelected ? 'glow-border z-0' : 'border-amber-200 border-2'}
+        ${isSelected ? 'glow-border mobile-glow-border z-0 p-[3px] md:p-[3px] lg:p-[0px]' : 'border-amber-50'}
       `}
               >
                 <img
                   src={`https://ddragon.leagueoflegends.com/cdn/15.14.1/img/spell/${spell.id}.png`}
                   alt={spell.name}
-                  className={`rounded z-10 ${isSelected ? 'm-[3px]' : ''} relative`}
+                  className={`rounded z-10 ${isSelected ? 'lg:m-[3px]' : ''} relative`}
                 />
               </div>
             );
@@ -91,7 +97,7 @@ const CDSkill = ({ champion }: { champion: Champion }) => {
                 return (
                   <div key={spell.id} className="flex flex-col items-center">
                     <h3 className="text-lg font-bold">{spell.name}</h3>
-                    <p dangerouslySetInnerHTML={{ __html: spell.description }} className="w-[40%]" />
+                    <p dangerouslySetInnerHTML={{ __html: spell.description }} className="lg:w-[60%]" />
                   </div>
                 );
               }

@@ -96,3 +96,27 @@ body {
   transform: translateY(-50%);
   transform-origin: top center;
 }
+
+.mobile-glow-border {
+  position: relative;
+  z-index: 1;
+}
+
+.mobile-glow-border::before {
+  content: '';
+  display: block;
+  background: linear-gradient(
+    90deg,
+    rgba(253, 230, 138, 0) 0%,
+    /* amber-200, trong suốt */ rgba(253, 230, 138, 1) 50%,
+    /* amber-200, mờ */ rgba(253, 230, 138, 0) 100% /* amber-200, trong suốt */
+  );
+  height: 100px;
+  width: 40px;
+  position: absolute;
+  animation: rotate 0.7s linear forwards infinite;
+
+  top: 50%;
+  transform: translateY(-50%);
+  transform-origin: top center;
+}
